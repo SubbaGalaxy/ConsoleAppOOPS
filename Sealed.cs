@@ -16,7 +16,7 @@ namespace ConsoleAppOOPS
     {
         public void myfuncSealed()
         {
-            Console.WriteLine("from myfuncSealedclass, sealed class CAN NOT be inherited");
+            Console.WriteLine("from myfuncSealedclass, sealed class CAN NOT be inherited...");
         }
     }
 

@@ -32,5 +32,13 @@ namespace ConsoleAppOOPS
             
         }
 
+        public int MySquare(int x)
+        {
+            int Calc = x * x;
+            //Console.WriteLine("EncapsulationMySquare:" + Calc.ToString());
+            return Calc;
+
+        }
+
     }
 }

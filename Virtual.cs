@@ -34,9 +34,15 @@ namespace ConsoleAppOOPS
             //still access the base class method
             base.VirtualMethod();
         }
+
+        public Decimal myFunc(int a, int b, int c)
+        {
+            return Convert.ToDecimal(a + b + c);
+        }
     }
 
-    //Hiding Methods : If a method with the same signature is declared in both base and derived classes, but the methods are not declared as virtual and overriden respectively, then the derived class version is said to hide the base class version. In most cases, you would want to override methods rather than hide them.Otherwise.NET automatically generates a warning.
+    //Hiding Methods : If a method with the same signature is declared in both base and derived classes, but the methods are not declared as virtual and overriden
+    //respectively, then the derived class version is said to hide the base class version. In most cases, you would want to override methods rather than hide them.Otherwise.NET automatically generates a warning.
 
 
     //class virtualClass

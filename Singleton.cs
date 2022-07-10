@@ -29,7 +29,7 @@ namespace ConsoleAppOOPS
                 {
                     lock (obj)  //ensures only one thread enters into code block ., other will wait funtil first one completed
                     {
-                        if (objInstance == null) //lazy initialization .. object will no tbe created until instance property invoked.
+                        if (objInstance == null) //lazy initialization .. object will not be created until instance property invoked.
                             objInstance = new Singleton();
                     }
                 }

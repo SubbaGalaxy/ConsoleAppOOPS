@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Linq;
+
 
 //https://www.c-sharpcorner.com/UploadFile/84c85b/object-oriented-programming-using-C-Sharp-net/
 //https://www.c-sharpcorner.com/UploadFile/d6fefe/delegate-anonymous-function-and-lambda-expression-in-C-Sharp/#:~:text=And%20the%20main%20difference%20between%20C%2B%2B%20function%20pointers,the%20same%20as%20passing%20methods%20to%20another%20method.
@@ -8,7 +9,11 @@ using System.Threading.Tasks;
 
 //None of the Func or Action types allow out or ref parameters, so you'll have to define your own delegates if you need to use those e.g.:
 //public delegate bool TryParse<T>(string s, out T value);
-
+//String objects are immutable: they can't be changed after they've been created.
+//All of the String methods and C# operators that appear to modify a string actually return the results in a new string object.
+//The statement that a string is immutable means that, once created, it is not altered by changing the value assigned to it.
+//StringBuilder is the mutable string type. It will not create a new modified instance of the current string object but do the modifications in the existing string object.
+//arrays are mutable
 namespace ConsoleAppOOPS
 {
     class Program
@@ -53,10 +58,10 @@ namespace ConsoleAppOOPS
             fromStudent.PrintDetails("from  Student SingletonGetMyOnlyInstance ");
             */
             //Called both methods parallel  //MultithreadEnvironment
-            Parallel.Invoke( 
-                ()=> PrintStudentDetails(),
-                ()=> PrintEmployeeDetails()
-                );
+            //Parallel.Invoke( 
+            //    ()=> PrintStudentDetails(),
+            //    ()=> PrintEmployeeDetails()
+            //    );
             Console.ReadLine();
             //PrintStudentDetails();
             //PrintEmployeeDetails();
@@ -239,7 +244,72 @@ namespace ConsoleAppOOPS
 
             //Note that you can write extension methods for interfaces, which can help to share implementation code.
 
+            //*******123START**************
+            //variables that are declared at method scope can have an implicit "type" var.An implicitly typed local variable is strongly typed
+            //just as if you had declared the type yourself, but the compiler determines the type.
+            // Example #1: var is optional when
+            // the select clause specifies a string
+                string[] words = { "apple", "strawberry", "grape", "peach", "banana" };
+            var wordQuery = from word in words
+                            where word[0] == 'g'
+                            select word;
+
+            // Because each element in the sequence is a string,
+            // not an anonymous type, var is optional here also.
+            foreach (string s in wordQuery)
+            {
+                Console.WriteLine(s);
+            };
+
+            //// Example #2: var is required because
+            //// the select clause specifies an anonymous type
+            /// <summary>
+
+            //string[] customers = { "ATT", "VZ", "FIOS", "SPECTRUM", "TMOBILE" };
+            //var custQuery = from cust in customers
+            //                where cust.City == "Phoenix"
+            //                select new { cust.Name, cust.Phone };
+
+
+            //// var must be used because each item
+            //// in the sequence is an anonymous type
+            //foreach (var item in custQuery)
+            //{
+            //    Console.WriteLine("Name={0}, Phone={1}", item.Name, item.Phone);
+            //}
+
+            //    /// </summary>
+
+
+
+            ////private static readonly PizzaInfo[] TheMenu = new[]
+            ////{
+            ////    new PizzaInfo { PizzaName = "The Mighty Meatball", Ingredients = "Meatballs and cheese", Cost = 40, InStock = "yes"},
+            ////    new PizzaInfo { PizzaName = "Crab Apple", Ingredients = "Dungeness crab and apples", Cost = 35, InStock = "no"},
+            ////    new PizzaInfo { PizzaName = "Forest Floor", Ingredients = "Mushrooms, rutabagas, and walnuts", Cost = 20, InStock = "yes"},
+            ////    new PizzaInfo { PizzaName = "Don't At Me", Ingredients = "Pineapple, Canadian bacon, jalapeños", Cost = 25, InStock = "yes"},
+            ////    new PizzaInfo { PizzaName = "Vanilla", Ingredients = "Sausage and pepperoni", Cost = 15, InStock = "no"},
+            ////    new PizzaInfo { PizzaName = "Spice Coming At Ya", Ingredients = "Peppers, chili sauce, spicy andouille", Cost = 50, InStock = "yes"}
+            ////};
+
+        //string custQuery = from cust in PizzaInfo
+        //                where cust.Ingredients == "Pineapple, Canadian bacon, jalapeños"
+        //                   select new { cust.Name, cust.Phone };
+
+        //*******123END**************
+
+
+    }
+
+    /////MyDelegate handler = DelegateMethodAdd; //instantiate the delegate
+
+
+
+    private static int AddNumbers(int val1, int val2)
+        {
+            throw new NotImplementedException();
         }
+
         public static void TestMyStringvalue(string test)
         {
             test = "after passing value";
@@ -334,7 +404,6 @@ namespace ConsoleAppOOPS
     //of the class. All the member fields, properties and functions must be declared
     //as static and they are accessed by the class name directly not by a class instance object.
 
-
     static public class staticDemo
     {
         //static fields
@@ -353,6 +422,7 @@ namespace ConsoleAppOOPS
         //}
     }
     
+
   
 
 }
